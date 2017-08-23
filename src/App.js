@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
+      <form onSubmit={ this.handleLogin }>
+        <div>
+          <label htmlFor='username'>Username</label>
+          <input type='text' name='username' id='username' ref='username' />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <div>
+          <label htmlFor='password'>Password</label>
+          <input type='password' name='password' id='password' ref='password' />
+        </div>
+        <div>
+          <input type='submit' />
+        </div>
+      </form>
     );
   }
 }
