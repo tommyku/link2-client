@@ -8,6 +8,15 @@ class App extends Component {
 
   handleLogin(e) {
     e.preventDefault();
+    const payload = JSON.stringify({
+      username: this.refs['username'].value,
+      password: this.refs['password'].value
+    });
+    fetch('http://localhost:3000/login', { method: 'POST', body: payload })
+      .then((res) => {
+        res.json().then(console.log);
+      })
+      .catch(console.log)
   }
 
   render() {
