@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import LoginPage from './pages/LoginPage';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { LoginPage, IndexPage, NotFoundPage } from './pages';
 
 class App extends Component {
   render() {
     return (
-      <LoginPage />
+      <Switch>
+        <Route path='/' exact component={IndexPage} />
+        <Route path='/login' exact component={LoginPage} />
+        <Route path='/404' exact component={NotFoundPage} />
+        <Redirect to='/404' />
+      </Switch>
     );
   }
 }
